@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>URLRequestHeater Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/URLRequestHeater" class="dashAnchor"></a>
+    <a title="URLRequestHeater Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">WKWebView_WarmUp 1.0.0 Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/eaceto/WKWebView-WarmUp"><img src="../img/gh.png" alt="GitHub"/>View on GitHub</a></p>
+        <div class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </div>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">WKWebView_WarmUp Reference</a>
+        <img id="carat" src="../img/carat.png" alt=""/>
+        URLRequestHeater Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/Heater.html">Heater</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/URLRequestHeater.html">URLRequestHeater</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/WKWebViewSharedManager.html">WKWebViewSharedManager</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/WKWebView.html">WKWebView</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/Warmable.html">Warmable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/WarmableURL.html">WarmableURL</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:16WKWebView_WarmUp0aB6Heatera">WKWebViewHeater</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>URLRequestHeater</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">URLRequestHeater</span><span class="o">&lt;</span><span class="kt">Object</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">Object</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/WarmableURL.html">WarmableURL</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>An <strong>URLRequestHeater</strong> warms up an <strong>Object</strong> that has an associated operation that requieres an <strong>URLRequest</strong>
+It provies a function warm up objects, and retrieve them.</p>
+
+<p>Objects can be enqueued by using an <strong>URL</strong>, <strong>URLRequest</strong>, or none.</p>
+
+<p>Dequeue can be done at any time, but that doesn&rsquo;t meed the object is fully loaded. Yet, it should be usable.
+If an object is dequeued without specifiygin an <strong>URL</strong> or <strong>URLRequest</strong>, a default (warmedup) object is returned.</p>
+
+              <div class="slightly-smaller">
+                <a href="https://github.com/eaceto/WKWebView-WarmUp/tree/main/Sources/WKWebView_WarmUp/URLRequestHeater.swift#L20-L42">Show on GitHub</a>
+              </div>
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16WKWebView_WarmUp16URLRequestHeaterC04warmD04withy10Foundation3URLV_tF"></a>
+                    <a name="//apple_ref/swift/Method/warmUp(with:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16WKWebView_WarmUp16URLRequestHeaterC04warmD04withy10Foundation3URLV_tF">warmUp(with:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>starts warming up a new <strong>Object</strong> identified by an <strong>URL</strong></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">warmUp</span><span class="p">(</span><span class="n">with</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>url</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>an URL that will be sent as param in the creation closure.
+Object is identified by this url</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/eaceto/WKWebView-WarmUp/tree/main/Sources/WKWebView_WarmUp/URLRequestHeater.swift#L50-L53">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16WKWebView_WarmUp16URLRequestHeaterC04warmD04withy10Foundation0E0V_tF"></a>
+                    <a name="//apple_ref/swift/Method/warmUp(with:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16WKWebView_WarmUp16URLRequestHeaterC04warmD04withy10Foundation0E0V_tF">warmUp(with:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>starts warming up a new <strong>Object</strong> identified by an <strong>urlString</strong></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">warmUp</span><span class="p">(</span><span class="n">with</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">URLRequest</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>an URL Request that will be sent as param in the creation closure.
+Object is identified by its absolute URL String.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/eaceto/WKWebView-WarmUp/tree/main/Sources/WKWebView_WarmUp/URLRequestHeater.swift#L58-L63">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16WKWebView_WarmUp16URLRequestHeaterC7dequeuexyF"></a>
+                    <a name="//apple_ref/swift/Method/dequeue()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16WKWebView_WarmUp16URLRequestHeaterC7dequeuexyF">dequeue()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Dequeues an anonymous object (not initialized with any URL)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">dequeue</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Object</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>an <strong>Object</strong></p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/eaceto/WKWebView-WarmUp/tree/main/Sources/WKWebView_WarmUp/URLRequestHeater.swift#L70-L72">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16WKWebView_WarmUp16URLRequestHeaterC7dequeue4withxSg10Foundation3URLV_tF"></a>
+                    <a name="//apple_ref/swift/Method/dequeue(with:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16WKWebView_WarmUp16URLRequestHeaterC7dequeue4withxSg10Foundation3URLV_tF">dequeue(with:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Dequeues a named object if available</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">dequeue</span><span class="p">(</span><span class="n">with</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Object</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>url</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>an URL that  identifies the warmed-up object</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>an <strong>Object</strong> if exists in the <strong>URLRequestHeater</strong> pool of objects, <strong>nil</strong> otherwise</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/eaceto/WKWebView-WarmUp/tree/main/Sources/WKWebView_WarmUp/URLRequestHeater.swift#L77-L84">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16WKWebView_WarmUp16URLRequestHeaterC7dequeue4withxSg10Foundation0E0V_tF"></a>
+                    <a name="//apple_ref/swift/Method/dequeue(with:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16WKWebView_WarmUp16URLRequestHeaterC7dequeue4withxSg10Foundation0E0V_tF">dequeue(with:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Dequeues a named object if available</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">dequeue</span><span class="p">(</span><span class="n">with</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">URLRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Object</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>request</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>an URL Request, which absolute URL identifies the warmed-up object</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>an <strong>Object</strong> if exists in the <strong>URLRequestHeater</strong> pool of objects, <strong>nil</strong> otherwise</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/eaceto/WKWebView-WarmUp/tree/main/Sources/WKWebView_WarmUp/URLRequestHeater.swift#L89-L96">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16WKWebView_WarmUp16URLRequestHeaterC5clearyyF"></a>
+                    <a name="//apple_ref/swift/Method/clear()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16WKWebView_WarmUp16URLRequestHeaterC5clearyyF">clear()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Removed all the warmed-up objects</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">clear</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/eaceto/WKWebView-WarmUp/tree/main/Sources/WKWebView_WarmUp/URLRequestHeater.swift#L102-L104">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Available%20where%20%60Object%60%20%3D%3D%20%60WKWebView%60"></a>
+                <a name="//apple_ref/swift/Section/Available where `Object` == `WKWebView`" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Available%20where%20%60Object%60%20%3D%3D%20%60WKWebView%60"></a>
+                  <h3 class="section-name"><span>Available where <code>Object</code> == <code>WKWebView</code></span>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16WKWebView_WarmUp16URLRequestHeaterCAASo0aB0CRszrlE6sharedACyAEGvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/shared" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16WKWebView_WarmUp16URLRequestHeaterCAASo0aB0CRszrlE6sharedACyAEGvpZ">shared</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>An instance of <strong>WKWebViewHeater</strong> that has a <strong>default configuration</strong>
+for all the WKWebViews warmedup by this heater.</p>
+
+<p>Default Configuration uses the same <strong>WKProcessPool</strong> for all the WKWebViews return by the heater.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">private(set)</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">shared</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:16WKWebView_WarmUp0aB6Heatera">WKWebViewHeater</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/eaceto/WKWebView-WarmUp/tree/main/Sources/WKWebView_WarmUp/WKWebViewHeater.swift#L17">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:16WKWebView_WarmUp16URLRequestHeaterCAASo0aB0CRszrlE13sharedManagerACyAEGAA0ab6SharedH0C_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(sharedManager:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16WKWebView_WarmUp16URLRequestHeaterCAASo0aB0CRszrlE13sharedManagerACyAEGAA0ab6SharedH0C_tcfc">init(sharedManager:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates an instance of <strong>WKWebViewHeater</strong> that has a <strong>common configuration</strong>
+for all the WKWebViews warmedup by this heater.</p>
+
+<p>Apart from the provided configuration, all WKWebView share the same <strong>WKProcessPool</strong></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="n">convenience</span> <span class="nf">init</span><span class="p">(</span><span class="nv">sharedManager</span><span class="p">:</span> <span class="kt"><a href="../Classes/WKWebViewSharedManager.html">WKWebViewSharedManager</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/eaceto/WKWebView-WarmUp/tree/main/Sources/WKWebView_WarmUp/WKWebViewHeater.swift#L27-L34">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2022 <a class="link" href="https://eaceto.dev/" target="_blank" rel="external noopener">Ezequiel (Kimi) Aceto</a>. All rights reserved. (Last updated: 2022-04-28)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</html>

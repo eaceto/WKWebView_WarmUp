@@ -1,0 +1,46 @@
+name: Swift Docs
+
+on:
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:    
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate-documentation:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        ref: ${{ github.head_ref }}
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build
+      run: swift build --enable-code-coverage --build-path .build/coverage-build
+    - name: Run tests
+      run: swift test  --enable-code-coverage --build-path .build/coverage-build
+    - name: Generate docs directory
+      run: |
+        rm -rf docs/code docs/coverage
+        mkdir -p docs/code/jazzy
+        mkdir -p docs/code/swiftlint
+        mkdir -p docs/coverage
+    - name: Install dependencies
+      run: |
+        brew install lcov
+    - name: Generate Swiftlint Report
+      run: |
+        ./.scripts/report-swiftlint.sh
+    - name: Generate Coverage Report
+      run: |
+        ./.scripts/report-coverage.sh
+    - name: Generate Code documentation
+      uses: sersoft-gmbh/swifty-docs-action@v1.2.1
+    - name: Publish documentation
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Updated documentation
+      
+        

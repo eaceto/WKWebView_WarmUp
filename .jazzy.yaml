@@ -1,0 +1,9 @@
+module: WKWebView_WarmUp
+author: Ezequiel (Kimi) Aceto
+author_url: https://eaceto.dev/
+source_host: github
+source_host_url: https://github.com/eaceto/WKWebView-WarmUp
+source_host_files_url: https://github.com/eaceto/WKWebView-WarmUp/tree/main
+podspec: WKWebView_WarmUp.podspec
+output: docs/code/jazzy
+clean: true
