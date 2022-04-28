@@ -58,6 +58,8 @@ dependencies: [
 
 ### Usage
 
+note: **warmUp** should always be called in the **Main Thread**.
+
 When you want to speed up the loading of a WebView, perform the following request with the required URL / URLRequest to load. 
 
 ````swift
