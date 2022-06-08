@@ -1,4 +1,4 @@
-libraryVersion = "1.1.0"
+libraryVersion = "1.1.1"
 
 Pod::Spec.new do |s|
     s.name	= "WKWebView_WarmUp"
