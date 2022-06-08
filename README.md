@@ -9,7 +9,7 @@
 [![Swift CI](https://github.com/eaceto/WKWebView_WarmUp/actions/workflows/swift-ci.yml/badge.svg)](https://github.com/eaceto/WKWebView_WarmUp/actions/workflows/swift-ci.yml)
 [![Swift Docs](https://github.com/eaceto/WKWebView_WarmUp/actions/workflows/swift-docs.yml/badge.svg?branch=main)](https://github.com/eaceto/WKWebView_WarmUp/actions/workflows/swift-docs.yml)
 
-[![Latest release](https://img.shields.io/badge/Latest_release-1.0.0-blue.svg)](https://github.com/eaceto/WKWebView/releases/1.0.0)
+[![Latest release](https://img.shields.io/badge/Latest_release-1.1.0-blue.svg)](https://github.com/eaceto/WKWebView/releases/1.1.0)
 
 A library that speeds up the loading of Web Pages when using WKWebView.
 
@@ -26,14 +26,15 @@ A library that speeds up the loading of Web Pages when using WKWebView.
     * [Cocoapods](#cocoapods)
     * [Swift Package Manager](#swift-package-manager)
 4. [Usage](#usage)
-5. [Author](#author)
+5. [Notes](#notes)
+6. [Author](#author)
 
 ### Requirements
 
 | Platform | Minimun Swift Version | Installation | Status |
 | --- | --- | --- | --- |
 | iOS 9.0+ | 5.3 | [Cocoapods](#cocoapods), [Swift Package Manager](#swift-package-manager) | Fully Tested |
-| macOS 10.10+ | 5.3 | [Cocoapods](#cocoapods), [Swift Package Manager](#swift-package-manager) | Fully Tested |
+| macOS 10.12+ | 5.3 | [Cocoapods](#cocoapods), [Swift Package Manager](#swift-package-manager) | Fully Tested |
 
 ### Installation
 #### Cocoapods
@@ -72,6 +73,17 @@ Then, when you want to retrieve the warmed-up WebView, just call
 ````swift
 let webView = WKWebViewHeater.shared.dequeue(with: url)!
 ````
+
+#### Lifespan
+
+Warmed-up WebView may have a lifespan. In case the end of life of a WebView happens when it's inside the pool (not yet dequeued), the pool will reload it by calling the **warmUp** method over the WebView automatically.
+
+````swift
+let url = URL(string: "https://duckduckgo.com")!
+WKWebViewHeater.shared.warmUp(with: url, lifespan: 30.0)  //WebView will be automatically reloaded every 30 seconds.
+````
+
+### Notes
 
 **Remember that** this WebView's size is Zero! In order to added to your ViewController, use AutoLayout as follows:
 

@@ -1,4 +1,4 @@
-libraryVersion = "1.0.0"
+libraryVersion = "1.1.0"
 
 Pod::Spec.new do |s|
     s.name	= "WKWebView_WarmUp"
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
     }
 
     s.ios.deployment_target   = "9.0"
-    s.macos.deployment_target = "10.10"
+    s.macos.deployment_target = "10.12"
 
     s.swift_versions = ['5.3', '5.4', '5.5', '5.6']
 

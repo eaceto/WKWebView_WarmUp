@@ -5,6 +5,10 @@ import PackageDescription
 
 let package = Package(
     name: "WKWebView_WarmUp",
+    platforms: [
+        .iOS(.v9),
+        .macOS(.v10_12),
+    ],
     products: [
         .library(
             name: "WKWebView_WarmUp",

@@ -86,10 +86,7 @@ final class WKWebViewHeaterTests: XCTestCase {
         )
 
         DispatchQueue.global().async {
-            guard let webView = WKWebViewHeater.shared.dequeue(with: url) else {
-                XCTFail("WebView identified by \(url) does not exists")
-                return
-            }
+            let webView = WKWebViewHeater.shared.dequeue(with: url)
 
             repeat {
                 Thread.sleep(forTimeInterval: 0.05) // Give WKWebViewHeater time to load
@@ -114,10 +111,7 @@ final class WKWebViewHeaterTests: XCTestCase {
         )
 
         DispatchQueue.global().async {
-            guard let webView = WKWebViewHeater.shared.dequeue(with: initialUrl) else {
-                XCTFail("WebView identified by \(initialUrl) does not exists")
-                return
-            }
+            let webView = WKWebViewHeater.shared.dequeue(with: initialUrl)
 
             repeat {
                 Thread.sleep(forTimeInterval: 0.05) // Give WKWebViewHeater time to load
@@ -126,6 +120,40 @@ final class WKWebViewHeaterTests: XCTestCase {
             XCTAssert(webView.url?.absoluteString == finalUrl.absoluteString)
             XCTAssert(webView.configuration.processPool == WKWebViewSharedManager.default.processPool)
             XCTAssert(!webView.isLoading)
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 30.0) // Give this test 30 seconds max to complete
+    }
+
+    func testWarmUpAWebViewByURLWithLifespan() {
+        let url = URL(string: "https://duckduckgo.com/")!
+        WKWebViewHeater.shared.warmUp(with: url, livespan: 5.0)
+        XCTAssert(!WKWebViewHeater.shared.objectsLivespan.isEmpty)
+        
+        let expectation = XCTestExpectation(
+            description: "expect to have a WebView warmed-up at URL: \(url)"
+        )
+
+        DispatchQueue.global().async {
+            Thread.sleep(forTimeInterval: 7.0) // Give WKWebViewHeater time to expire and reload
+            
+            XCTAssert(WKWebViewHeater.shared.livespanTimer != nil)
+            XCTAssert(WKWebViewHeater.shared.livespanTimer?.isValid ?? false)
+            
+            let webView = WKWebViewHeater.shared.dequeue(with: url)
+
+            repeat {
+                Thread.sleep(forTimeInterval: 5.0) // Give WKWebViewHeater time to load
+            } while (webView.isLoading)
+
+            XCTAssert(webView.url?.absoluteString == url.absoluteString)
+            XCTAssert(webView.configuration.processPool == WKWebViewSharedManager.default.processPool)
+            XCTAssert(!webView.isLoading)
+            
+            XCTAssert(WKWebViewHeater.shared.objectsLivespan.isEmpty)
+            XCTAssert(WKWebViewHeater.shared.livespanTimer == nil)
+            
             expectation.fulfill()
         }
 
