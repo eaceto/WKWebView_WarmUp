@@ -21,9 +21,11 @@ public class URLRequestHeater<Object: WarmableURL> {
 
     private let creationClosure: () -> Object
 
-    internal var pool: [String: Object ] = [:]
     internal let anonymousHeater: Heater<Object>
-
+    internal var pool: [URLRequest: Object] = [:]
+    internal var objectsLivespan: [URLRequest: TimeInterval] = [:]
+    internal var livespanTimer: Timer? = nil
+    
     /**
      Initialize a **URLRequestHeater** with **creationClosure** as the block of code to init its objects
 
@@ -39,6 +41,24 @@ public class URLRequestHeater<Object: WarmableURL> {
         self.creationClosure = creationClosure
         self.anonymousHeater = Heater<Object>(creationClosure: creationClosure)
     }
+    
+    private func checkLivespanTimer() {
+        if livespanTimer != nil { return }
+        if let livespanTimer = livespanTimer, livespanTimer.isValid {
+            return
+        }
+        livespanTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
+            guard let self = self else { return }
+            let now = Date().timeIntervalSinceReferenceDate
+            self.objectsLivespan.forEach { (urlRequest, livespan) in
+                if now > livespan, let object = self.pool[urlRequest] {
+                    DispatchQueue.main.async {
+                        object.warmUp(with: urlRequest)
+                    }
+                }
+            }
+        })
+    }
 }
 
 /// Extension for (URL) named objects pool
@@ -46,20 +66,26 @@ public extension URLRequestHeater {
 
     /// starts warming up a new **Object** identified by an **URL**
     /// - Parameter url: an URL that will be sent as param in the creation closure.
+    /// - Parameter livespan: number of seconds of life of this warmed up object. It reloads the cache when the livespan ends.
     /// Object is identified by this url
-    func warmUp(with url: URL) {
+    func warmUp(with url: URL, livespan: TimeInterval? = nil) {
         let urlRequest = URLRequest(url: url)
-        warmUp(with: urlRequest)
+        warmUp(with: urlRequest, livespan: livespan)
     }
 
     /// starts warming up a new **Object** identified by an **urlString**
     /// - Parameter request: an URL Request that will be sent as param in the creation closure.
+    /// - Parameter livespan: number of seconds of life of this warmed up object. It reloads the cache when the livespan ends.
     ///  Object is identified by its absolute URL String.
-    func warmUp(with request: URLRequest) {
-        guard let url = request.url else { return }
+    func warmUp(with request: URLRequest, livespan: TimeInterval? = nil) {
         let object = creationClosure()
         object.warmUp(with: request)
-        pool[url.absoluteString] = object
+        pool[request] = object
+        if let livespan = livespan {
+            let endsDate = Date().timeIntervalSinceReferenceDate + livespan
+            objectsLivespan[request] = endsDate
+            checkLivespanTimer()
+        }
     }
 }
 
@@ -73,25 +99,27 @@ public extension URLRequestHeater {
 
     /// Dequeues a named object if available
     /// - Parameter url: an URL that  identifies the warmed-up object
-    /// - Returns: an **Object** if exists in the **URLRequestHeater** pool of objects, **nil** otherwise
-    func dequeue(with url: URL) -> Object? {
-        let urlString = url.absoluteString
-        guard let warmedUpObject = pool[urlString] else {
-            return nil
-        }
-        pool.removeValue(forKey: urlString)
-        return warmedUpObject
+    /// - Returns: a warmed up **Object** if exists in the **URLRequestHeater** pool of objects, or a new one.
+    func dequeue(with url: URL) -> Object {
+        let urlRequest = URLRequest(url: url)
+        return dequeue(with: urlRequest)
     }
 
     /// Dequeues a named object if available
     /// - Parameter request: an URL Request, which absolute URL identifies the warmed-up object
-    /// - Returns: an **Object** if exists in the **URLRequestHeater** pool of objects, **nil** otherwise
-    func dequeue(with request: URLRequest) -> Object? {
-        guard let url = request.url,
-              let warmedUpObject = pool[url.absoluteString] else {
-            return nil
+    /// - Returns: a warmed up **Object** if exists in the **URLRequestHeater** pool of objects, or a new one.
+    func dequeue(with request: URLRequest) -> Object {
+        guard let warmedUpObject = pool[request] else {
+            let object = dequeue()
+            object.warmUp(with: request)
+            return object
         }
-        pool.removeValue(forKey: url.absoluteString)
+        pool.removeValue(forKey: request)
+        objectsLivespan.removeValue(forKey: request)
+        if objectsLivespan.isEmpty {
+            livespanTimer?.invalidate()
+            livespanTimer = nil
+        }        
         return warmedUpObject
     }
 }

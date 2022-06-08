@@ -25,6 +25,10 @@ extension WKWebView: WarmableURL {
     /// Warms up  the WKWebView,  its engine, and prefetches the **URLRequest**
     /// - Parameter urlRequest: a valid URL Request  to prefetch
     public func warmUp(with urlRequest: URLRequest) {
+        if let url = url, url.absoluteString == urlRequest.url?.absoluteString {
+            self.reload()
+            return
+        }
         _ = self.load(urlRequest)
     }
 
