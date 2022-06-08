@@ -47,17 +47,26 @@ public class URLRequestHeater<Object: WarmableURL> {
         if let livespanTimer = livespanTimer, livespanTimer.isValid {
             return
         }
-        livespanTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
-            guard let self = self else { return }
-            let now = Date().timeIntervalSinceReferenceDate
-            self.objectsLivespan.forEach { (urlRequest, livespan) in
-                if now > livespan, let object = self.pool[urlRequest] {
-                    DispatchQueue.main.async {
-                        object.warmUp(with: urlRequest)
-                    }
+        
+        if #available(iOS 10.0, *) {
+            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true){ [weak self] _ in
+                self?.checkWebViewsLivespan()
+            }
+        } else {
+            Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.checkWebViewsLivespan), userInfo: nil, repeats: true)
+        }
+    }
+    
+    @objc
+    private func checkWebViewsLivespan() {
+        let now = Date().timeIntervalSinceReferenceDate
+        self.objectsLivespan.forEach { (urlRequest, livespan) in
+            if now > livespan, let object = self.pool[urlRequest] {
+                DispatchQueue.main.async {
+                    object.warmUp(with: urlRequest)
                 }
             }
-        })
+        }
     }
 }
 
