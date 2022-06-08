@@ -17,7 +17,7 @@
     <a title="URLRequestHeater Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">WKWebView_WarmUp 1.0.0 Docs</a> (100% documented)</p>
+        <p><a href="../index.html">WKWebView_WarmUp 1.1.0 Docs</a> (100% documented)</p>
         <p class="header-right"><a href="https://github.com/eaceto/WKWebView-WarmUp"><img src="../img/gh.png" alt="GitHub"/>View on GitHub</a></p>
         <div class="header-right">
           <form role="search" action="../search.json">
@@ -99,7 +99,7 @@ It provies a function warm up objects, and retrieve them.</p>
 If an object is dequeued without specifiygin an <strong>URL</strong> or <strong>URLRequest</strong>, a default (warmedup) object is returned.</p>
 
               <div class="slightly-smaller">
-                <a href="https://github.com/eaceto/WKWebView-WarmUp/tree/main/Sources/WKWebView_WarmUp/URLRequestHeater.swift#L20-L42">Show on GitHub</a>
+                <a href="https://github.com/eaceto/WKWebView-WarmUp/tree/main/Sources/WKWebView_WarmUp/URLRequestHeater.swift#L20-L62">Show on GitHub</a>
               </div>
           </section>
           <section class="section task-group-section">
@@ -108,9 +108,9 @@ If an object is dequeued without specifiygin an <strong>URL</strong> or <strong>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:16WKWebView_WarmUp16URLRequestHeaterC04warmD04withy10Foundation3URLV_tF"></a>
-                    <a name="//apple_ref/swift/Method/warmUp(with:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:16WKWebView_WarmUp16URLRequestHeaterC04warmD04withy10Foundation3URLV_tF">warmUp(with:<wbr>)</a>
+                    <a name="/s:16WKWebView_WarmUp16URLRequestHeaterC04warmD04with8livespany10Foundation3URLV_SdSgtF"></a>
+                    <a name="//apple_ref/swift/Method/warmUp(with:livespan:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16WKWebView_WarmUp16URLRequestHeaterC04warmD04with8livespany10Foundation3URLV_SdSgtF">warmUp(with:<wbr>livespan:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -125,7 +125,7 @@ If an object is dequeued without specifiygin an <strong>URL</strong> or <strong>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">warmUp</span><span class="p">(</span><span class="n">with</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">warmUp</span><span class="p">(</span><span class="n">with</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span> <span class="nv">livespan</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -141,7 +141,19 @@ If an object is dequeued without specifiygin an <strong>URL</strong> or <strong>
                               </td>
                               <td>
                                 <div>
-                                  <p>an URL that will be sent as param in the creation closure.
+                                  <p>an URL that will be sent as param in the creation closure.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>livespan</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>number of seconds of life of this warmed up object. It reloads the cache when the livespan ends.
 Object is identified by this url</p>
                                 </div>
                               </td>
@@ -150,7 +162,7 @@ Object is identified by this url</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/eaceto/WKWebView-WarmUp/tree/main/Sources/WKWebView_WarmUp/URLRequestHeater.swift#L50-L53">Show on GitHub</a>
+                        <a href="https://github.com/eaceto/WKWebView-WarmUp/tree/main/Sources/WKWebView_WarmUp/URLRequestHeater.swift#L71-L74">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -158,9 +170,9 @@ Object is identified by this url</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:16WKWebView_WarmUp16URLRequestHeaterC04warmD04withy10Foundation0E0V_tF"></a>
-                    <a name="//apple_ref/swift/Method/warmUp(with:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:16WKWebView_WarmUp16URLRequestHeaterC04warmD04withy10Foundation0E0V_tF">warmUp(with:<wbr>)</a>
+                    <a name="/s:16WKWebView_WarmUp16URLRequestHeaterC04warmD04with8livespany10Foundation0E0V_SdSgtF"></a>
+                    <a name="//apple_ref/swift/Method/warmUp(with:livespan:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:16WKWebView_WarmUp16URLRequestHeaterC04warmD04with8livespany10Foundation0E0V_SdSgtF">warmUp(with:<wbr>livespan:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -175,7 +187,7 @@ Object is identified by this url</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">warmUp</span><span class="p">(</span><span class="n">with</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">URLRequest</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">warmUp</span><span class="p">(</span><span class="n">with</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">URLRequest</span><span class="p">,</span> <span class="nv">livespan</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -191,7 +203,19 @@ Object is identified by this url</p>
                               </td>
                               <td>
                                 <div>
-                                  <p>an URL Request that will be sent as param in the creation closure.
+                                  <p>an URL Request that will be sent as param in the creation closure.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>livespan</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>number of seconds of life of this warmed up object. It reloads the cache when the livespan ends.
 Object is identified by its absolute URL String.</p>
                                 </div>
                               </td>
@@ -200,7 +224,7 @@ Object is identified by its absolute URL String.</p>
                         </table>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/eaceto/WKWebView-WarmUp/tree/main/Sources/WKWebView_WarmUp/URLRequestHeater.swift#L58-L63">Show on GitHub</a>
+                        <a href="https://github.com/eaceto/WKWebView-WarmUp/tree/main/Sources/WKWebView_WarmUp/URLRequestHeater.swift#L80-L89">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -234,7 +258,7 @@ Object is identified by its absolute URL String.</p>
                         <p>an <strong>Object</strong></p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/eaceto/WKWebView-WarmUp/tree/main/Sources/WKWebView_WarmUp/URLRequestHeater.swift#L70-L72">Show on GitHub</a>
+                        <a href="https://github.com/eaceto/WKWebView-WarmUp/tree/main/Sources/WKWebView_WarmUp/URLRequestHeater.swift#L96-L98">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -242,9 +266,9 @@ Object is identified by its absolute URL String.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:16WKWebView_WarmUp16URLRequestHeaterC7dequeue4withxSg10Foundation3URLV_tF"></a>
+                    <a name="/s:16WKWebView_WarmUp16URLRequestHeaterC7dequeue4withx10Foundation3URLV_tF"></a>
                     <a name="//apple_ref/swift/Method/dequeue(with:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:16WKWebView_WarmUp16URLRequestHeaterC7dequeue4withxSg10Foundation3URLV_tF">dequeue(with:<wbr>)</a>
+                    <a class="token" href="#/s:16WKWebView_WarmUp16URLRequestHeaterC7dequeue4withx10Foundation3URLV_tF">dequeue(with:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -259,7 +283,7 @@ Object is identified by its absolute URL String.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">dequeue</span><span class="p">(</span><span class="n">with</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Object</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">dequeue</span><span class="p">(</span><span class="n">with</span> <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Object</span></code></pre>
 
                         </div>
                       </div>
@@ -284,10 +308,10 @@ Object is identified by its absolute URL String.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>an <strong>Object</strong> if exists in the <strong>URLRequestHeater</strong> pool of objects, <strong>nil</strong> otherwise</p>
+                        <p>a warmed up <strong>Object</strong> if exists in the <strong>URLRequestHeater</strong> pool of objects, or a new one.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/eaceto/WKWebView-WarmUp/tree/main/Sources/WKWebView_WarmUp/URLRequestHeater.swift#L77-L84">Show on GitHub</a>
+                        <a href="https://github.com/eaceto/WKWebView-WarmUp/tree/main/Sources/WKWebView_WarmUp/URLRequestHeater.swift#L103-L106">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -295,9 +319,9 @@ Object is identified by its absolute URL String.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:16WKWebView_WarmUp16URLRequestHeaterC7dequeue4withxSg10Foundation0E0V_tF"></a>
+                    <a name="/s:16WKWebView_WarmUp16URLRequestHeaterC7dequeue4withx10Foundation0E0V_tF"></a>
                     <a name="//apple_ref/swift/Method/dequeue(with:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:16WKWebView_WarmUp16URLRequestHeaterC7dequeue4withxSg10Foundation0E0V_tF">dequeue(with:<wbr>)</a>
+                    <a class="token" href="#/s:16WKWebView_WarmUp16URLRequestHeaterC7dequeue4withx10Foundation0E0V_tF">dequeue(with:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -312,7 +336,7 @@ Object is identified by its absolute URL String.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">dequeue</span><span class="p">(</span><span class="n">with</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">URLRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Object</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">dequeue</span><span class="p">(</span><span class="n">with</span> <span class="nv">request</span><span class="p">:</span> <span class="kt">URLRequest</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Object</span></code></pre>
 
                         </div>
                       </div>
@@ -337,10 +361,10 @@ Object is identified by its absolute URL String.</p>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>an <strong>Object</strong> if exists in the <strong>URLRequestHeater</strong> pool of objects, <strong>nil</strong> otherwise</p>
+                        <p>a warmed up <strong>Object</strong> if exists in the <strong>URLRequestHeater</strong> pool of objects, or a new one.</p>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/eaceto/WKWebView-WarmUp/tree/main/Sources/WKWebView_WarmUp/URLRequestHeater.swift#L89-L96">Show on GitHub</a>
+                        <a href="https://github.com/eaceto/WKWebView-WarmUp/tree/main/Sources/WKWebView_WarmUp/URLRequestHeater.swift#L111-L124">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -370,7 +394,7 @@ Object is identified by its absolute URL String.</p>
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/eaceto/WKWebView-WarmUp/tree/main/Sources/WKWebView_WarmUp/URLRequestHeater.swift#L102-L104">Show on GitHub</a>
+                        <a href="https://github.com/eaceto/WKWebView-WarmUp/tree/main/Sources/WKWebView_WarmUp/URLRequestHeater.swift#L130-L132">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -459,7 +483,7 @@ for all the WKWebViews warmedup by this heater.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2022 <a class="link" href="https://eaceto.dev/" target="_blank" rel="external noopener">Ezequiel (Kimi) Aceto</a>. All rights reserved. (Last updated: 2022-04-28)</p>
+          <p>&copy; 2022 <a class="link" href="https://eaceto.dev/" target="_blank" rel="external noopener">Ezequiel (Kimi) Aceto</a>. All rights reserved. (Last updated: 2022-06-08)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
