@@ -82,7 +82,7 @@ Warmed-up WebView may have a lifespan. In case the end of life of a WebView happ
 
 ````swift
 let url = URL(string: "https://duckduckgo.com")!
-WKWebViewHeater.shared.warmUp(with: url, lifespan: 30.0)  //WebView will be automatically reloaded every 30 seconds.
+WKWebViewHeater.shared.warmUp(with: url, livespan: 30.0)  //WebView will be automatically reloaded every 30 seconds.
 ````
 
 ### Notes
@@ -93,7 +93,7 @@ WKWebViewHeater.shared.warmUp(with: url, lifespan: 30.0)  //WebView will be auto
 // Declare a variable that holds the WebView
 private lazy var webView: WKWebView = {
     let webView: WKWebView!
-    webView = WKWebViewHeater.shared.dequeue(url: urlString)
+    webView = WKWebViewHeater.shared.dequeue(with: url)
     
     // Set other properties of the WebView
     webView.configuration.allowsInlineMediaPlayback = true
